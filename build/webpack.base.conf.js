@@ -2,12 +2,15 @@ var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
-var ExtractTextPlugin = require('extract-text-webpack-plugin'); //css单独打包
+// var ExtractTextPlugin = require('extract-text-webpack-plugin'); //css单独打包
+// var autoprefixer = require('autoprefixer')({ browsers: ['iOS >= 7', 'Android >= 4.1'] })
+
+// var extract = new ExtractTextPlugin('css/[name].[hash].css')
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
-var plugins = [];
-plugins.push(new ExtractTextPlugin('[name].css')); //css单独打包
+// var plugins = [];
+// plugins.push(extract); //css单独打包
 module.exports = {
   entry: {
     app: './src/main.js'
@@ -61,13 +64,7 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
-      },
-      {
-        test: /\.css$/,
-        exclude: /^node_modules$/,
-        loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
       }
     ]
-  },
-  plugins
+  }
 }

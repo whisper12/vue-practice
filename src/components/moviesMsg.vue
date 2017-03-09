@@ -1,7 +1,7 @@
 <template>
   <div>
-    <spinner v-if='guodu'></spinner>
-    <div v-if='!guodu'>
+    <spinner v-if='loading'></spinner>
+    <div v-if='!loading'>
       <div class="header-title">
         <div class="msg-back" @click="backLastPage">
           <div></div>
@@ -81,7 +81,7 @@ import star from './star/star'
   export default {
     data () {
       return {
-        guodu: true,
+        loading: true,
         movieMsg: {
           'rating': {
             'max': '',
@@ -195,7 +195,7 @@ import star from './star/star'
         this.$http.jsonp(id)
         .then(function (response) {
           _this.movieMsg = response.body
-          this.guodu = false
+          this.loading = false
           // console.log(JSON.stringify(response))
         })
         .catch(function (response) {
@@ -256,7 +256,7 @@ import star from './star/star'
     line-height: 2;
     font-size: .6rem;
     white-space: nowrap;
-    overflow: ellipsis;
+    text-overflow: ellipsis;
   }
   .msg-img-wrap {
     margin-right: 10px;
@@ -385,7 +385,7 @@ import star from './star/star'
     color: #999;
   }
   .msg-all-Comment {
-    color: #e54847;
+    color: #42bd56;
     font-weight: lighter;
     text-align: center;
     font-size: 15px;
