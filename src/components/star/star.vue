@@ -1,5 +1,5 @@
 <template>
-  <div class="star">
+  <div class="star" :style="{ marginTop: '3px'}">
     <span v-for="itemClass in itemClasses" :class="itemClass" class="star-item"></span>
   </div>
 </template>

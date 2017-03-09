@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import inTheaters from '@/components/inTheaters'
 import comingSoon from '@/components/comingSoon'
+import moviesMsg from '@/components/moviesMsg'
 
 Vue.use(Router)
 
@@ -21,6 +22,11 @@ export default new Router({
       path: '/comingSoon',
       name: 'comingSoon',
       component: comingSoon
+    },
+    {
+      path: '/movie/:id',
+      name: 'moviesMsg',
+      component: moviesMsg
     }
   ]
 })

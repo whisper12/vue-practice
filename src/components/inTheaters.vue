@@ -51,6 +51,12 @@ export default {
         .catch(function (response) {
           console.log(response)
         })
+  },
+  methods: {
+    showMoreMsg: function (str) {
+      const path = '/movie/' + str
+      this.$router.push({path: path})
+    }
   }
 }
 </script>
