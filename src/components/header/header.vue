@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="v-header">
-      <div class="v-header-logo">
+    <div class="v-header" flex="main:center">
+      <div class="v-header-logo" flex="main:center cross:center">
         <div>
           <img src="../../assets/logo.png">
         </div>
@@ -10,8 +10,14 @@
           <div>我们的精神角落</div>
         </div> -->
       </div>
-      <div class="v-header-input" @click="serch">
-        <input class="v-inp" type="text" v-model.trim="query" placeholder="请输入电影名"></input>
+      <div class="v-header-input" flex="cross:center main:right">
+        <ul>
+          <li><router-link to="/inTheaters">电影</router-link></li>
+          <li>图书</li>
+          <li>广播</li>
+          <li>小组</li>
+        </ul>
+        <span @click="search"></span>
       </div>
     </div>
     <div class="v-nav-bar">
@@ -32,7 +38,7 @@
       }
     },
     methods: {
-      serch: function () {
+      search: function () {
         this.$router.push({path: '/searchPage'})
       }
     }
@@ -41,11 +47,7 @@
 
 <style>
   .v-header {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
     height: 1.2rem;
-    padding: 10px 20px;
     box-sizing: border-box;
     background-color: #eee;
   }
@@ -63,8 +65,10 @@
     vertical-align: top;
   }
   .v-header-input {
-    width: 3rem;
+    /*width: 5rem;*/
     line-height: 100%;
+    flex: 2;
+    margin-right:20px;
   }
   .v-load-title h3 {
     font-size: 17px;
@@ -90,11 +94,36 @@
     font-size: 20px;
     color: #fff;
   }
-  .v-inp {
-    width: 100%;
-    height: .6rem;
-    border-style: none;
-    border-radius: 15px;
-    padding-left: 10px;
+  .v-header-input span{
+    font-size: 0;
+    background: url(../../assets/search.png) no-repeat;
+    background-size: cover;
+    width: .768rem;
+    height: .576rem;
+    /*margin-top: 4px;*/
+    position: relative;
+    display: inline-block;
+  }
+  .v-header-input ul{
+    margin-right: .2rem;
+    overflow: visible;
+  }
+  .v-header-input ul li{
+    height: 100%;
+    display: inline-block;
+    font-size: .5rem;
+    margin-right:.2rem;
+  }
+  .v-header-input ul li:nth-child(1) a{
+    color: rgb(35, 132, 232);
+  }
+  .v-header-input ul li:nth-child(2){
+    color: rgb(159, 120, 96)
+  }
+  .v-header-input ul li:nth-child(3){
+    color: rgb(228, 168, 19)
+  }
+  .v-header-input ul li:nth-child(4){
+    color: rgb(42, 184, 204)
   }
 </style>

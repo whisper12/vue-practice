@@ -21,7 +21,7 @@ p,ul,li{
 h3{
   margin:0;
 }
-ul li{
+ul li,a{
 	text-decoration: none;
 	list-style: none;
 }

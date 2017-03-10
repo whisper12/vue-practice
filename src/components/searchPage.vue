@@ -14,20 +14,21 @@
 		<div class="search-body" flex="cross:center main:center box:mean">
 			<div class="left-content">
 				<ul>
-					<li v-for="item in itemClass1" :class="item.class">{{item.title}}<p>{{item.stitle}}</p></li>
+					<li v-for="item in itemClass1" :class="item.class" @click="search(item.id)">{{item.title}}<p>{{item.stitle}}</p></li>
 				</ul>
 			</div>
 			<div class="mid-content">
 				<ul>
-					<li v-for="item in itemClass2" :class="item.class">{{item.title}}<p>{{item.stitle}}</p></li>
+					<li v-for="item in itemClass2" :class="item.class" @click="search(item.id)">{{item.title}}<p>{{item.stitle}}</p></li>
 				</ul>
 			</div>
 			<div class="right-content">
 				<ul>
-					<li v-for="item in itemClass3" :class="item.class">{{item.title}}<p>{{item.stitle}}</p></li>
+					<li v-for="item in itemClass3" :class="item.class" @click="search(item.id)">{{item.title}}<p>{{item.stitle}}</p></li>
 				</ul>
 			</div>
 		</div>
+		<div class="top-more" flex="cross:center main:center" v-if="!loading">查看豆瓣电影Top250</div>
 		<spinner v-if="loading"></spinner>
 	</div>
 </template>
@@ -48,22 +49,22 @@ import spinner from './spinner/spinner'
 			spinner
 		},
 		mounted: function () {
-			var url = 'https://api.douban.com/v2/movie/top250'
+			let url = 'https://api.douban.com/v2/movie/top250'
 			this.$http.jsonp(url)
 			.then(function(res){
 				this.loading=false
-				var item = res.body.subjects;
-				for(var i=0;i<6;i++){
-					var num = 'color' + Math.ceil(Math.random()*12)
-					this.itemClass1.push({'title':item[i].title,'class':num,'stitle':item[i].original_title});
+				let item = res.body.subjects;
+				for(let i=0;i<6;i++){
+					let num = 'color' + Math.ceil(Math.random()*12)
+					this.itemClass1.push({'title':item[i].title,'class':num,'stitle':item[i].original_title,'id':item[i].id});
 				}
-				for(var i=6;i<12;i++){
-					var num = 'color' + Math.ceil(Math.random()*12)
-					this.itemClass2.push({'title':item[i].title,'class':num,'stitle':item[i].original_title});
+				for(let i=6;i<12;i++){
+					let num = 'color' + Math.ceil(Math.random()*12)
+					this.itemClass2.push({'title':item[i].title,'class':num,'stitle':item[i].original_title,'id':item[i].id});
 				}
-				for(var i=12;i<18;i++){
-					var num = 'color' + Math.ceil(Math.random()*12)
-					this.itemClass3.push({'title':item[i].title,'class':num,'stitle':item[i].original_title});
+				for(let i=12;i<18;i++){
+					let num = 'color' + Math.ceil(Math.random()*12)
+					this.itemClass3.push({'title':item[i].title,'class':num,'stitle':item[i].original_title,'id':item[i].id});
 				}
 			})
 			.catch(function (res) {
@@ -86,7 +87,11 @@ import spinner from './spinner/spinner'
 			submit: function () {
 		        this.$router.push({path: '/serchResult', query: { name: this.query }})
 		        this.query = ''
-		      }
+		    },
+		    search: function(id) {
+		    	let _url ='/movie/' + id
+		    	this.$router.push({path:_url})
+		    }
 		}
 	}
 </script>
@@ -129,7 +134,7 @@ import spinner from './spinner/spinner'
 	}
 	.search-body ul li{
 		text-align: center;
-		margin:1rem 0;
+		margin:.8rem 0;
 		font-size: .45rem;
 	}
 	.search-body ul li p{
@@ -137,6 +142,14 @@ import spinner from './spinner/spinner'
 		transform:scale(.8);
 		white-space: nowrap;
 		text-overflow: ellipsis;
+	}
+	.top-more{
+		color: #42bd56;
+		border:1px solid #42bd56;
+		font-size: .5rem;
+		margin :0 1rem;
+		padding: 10px 0 ;
+		box-sizing: border-box;
 	}
 	.color1{
 		color: rgb(35, 132, 232);

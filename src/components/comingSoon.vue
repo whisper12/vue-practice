@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     showMoreMsg: function (str) {
-      const path = '/movie/' + str
+      let path = '/movie/' + str
       this.$router.push({path: path})
     }
   }

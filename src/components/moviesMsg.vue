@@ -193,9 +193,9 @@ import star from './star/star'
     },
     mounted: function () {
       this.$nextTick(function () {
-        const _this = this
+        let _this = this
         // console.log(this.$route)
-        const id = 'https://api.douban.com/v2/movie/new_movies/' + this.$route.params.id + '?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&client=something&udid=dddddddddddddddddddddd'
+        let id = 'https://api.douban.com/v2/movie/subject/' + this.$route.params.id + '?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&client=something&udid=dddddddddddddddddddddd'
         this.$http.jsonp(id)
         .then(function (response) {
           _this.movieMsg = response.body
@@ -209,15 +209,15 @@ import star from './star/star'
     },
     methods: {
       starMsg: function (str) {
-        const path = '/starMsg/' + str
+        let path = '/starMsg/' + str
         this.$router.push({path: path})
       },
       comment: function (str) {
-        const path = '/comment/' + str
+        let path = '/comment/' + str
         this.$router.push({path: path})
       },
       smallComment: function (str) {
-        const path = '/smallComment/' + str
+        let path = '/smallComment/' + str
         this.$router.push({path: path})
       },
       backLastPage: function () {
