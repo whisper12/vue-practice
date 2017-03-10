@@ -14,11 +14,15 @@ export default {
 body{
   margin:0;
 }
-p{
+p,ul,li{
   padding: 0;
   margin:0;
 }
 h3{
   margin:0;
+}
+ul li{
+	text-decoration: none;
+	list-style: none;
 }
 </style>

@@ -30,8 +30,11 @@
         <div>{{movieMsg.wish_count}}人想看</div>
         <div>{{movieMsg.reviews_count}}人看过</div>
       </section>
-      <div class="msg-summary">
+      <div class="msg-summary" :class="{'msg-summary-es':!ellipsisFlag}">
         {{movieMsg.summary}}
+      </div>
+      <div class="msg-ellipsis" @click="ellipsisFlagChange">
+        <span :class="{'msg-ellipsis-flag-up':!ellipsisFlag,'msg-ellipsis-flag-down':ellipsisFlag}"></span>
       </div>
       <section class="msg-scoll-hidden">
         <section class="msg-star-wrap">
@@ -82,6 +85,7 @@ import star from './star/star'
     data () {
       return {
         loading: true,
+        ellipsisFlag:true,
         movieMsg: {
           'rating': {
             'max': '',
@@ -191,7 +195,7 @@ import star from './star/star'
       this.$nextTick(function () {
         const _this = this
         // console.log(this.$route)
-        const id = 'https://api.douban.com/v2/movie/subject/' + this.$route.params.id + '?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&client=something&udid=dddddddddddddddddddddd'
+        const id = 'https://api.douban.com/v2/movie/new_movies/' + this.$route.params.id + '?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&client=something&udid=dddddddddddddddddddddd'
         this.$http.jsonp(id)
         .then(function (response) {
           _this.movieMsg = response.body
@@ -218,6 +222,9 @@ import star from './star/star'
       },
       backLastPage: function () {
         window.history.go(-1)
+      },
+      ellipsisFlagChange: function(){
+        this.ellipsisFlag=!this.ellipsisFlag;
       }
     }
   }
@@ -328,6 +335,11 @@ import star from './star/star'
     padding: 10px;
     font-size: 14px;
     color: #555;
+    max-height: 3.2rem;
+    overflow: hidden;
+  }
+  .msg-summary-es{
+    max-height: 100rem !important;
   }
   .msg-star-wrap {
     padding: 10px;
@@ -398,5 +410,28 @@ import star from './star/star'
   }
   .msg-rating:last-child {
     flex: 1;
+  }
+  .msg-ellipsis{
+    width: 100%;
+    border-bottom: 1px solid #d6d3d3;
+    text-align: center;
+    height: .6rem;
+    padding-top: 5px;
+  }
+  .msg-ellipsis span{
+    display: inline-block;
+    height: .3rem;
+    width: .3rem;
+    border: 2px solid #d6d3d3;
+    border-width: 0 0 2px 2px;
+  }
+  .msg-ellipsis-flag-up{
+    -webkit-transform: rotate(-225deg);
+    transform: rotate(-225deg);
+    margin-top: 5px;
+  }
+  .msg-ellipsis-flag-down{
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
   }
 </style>
