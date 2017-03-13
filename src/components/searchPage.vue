@@ -28,7 +28,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="top-more" flex="cross:center main:center" v-if="!loading">查看豆瓣电影Top250</div>
+		<div class="top-more" flex="cross:center main:center" v-if="!loading" @click="toTop250">查看豆瓣电影Top250</div>
 		<spinner v-if="loading"></spinner>
 	</div>
 </template>
@@ -53,7 +53,7 @@ import spinner from './spinner/spinner'
 			this.$http.jsonp(url)
 			.then(function(res){
 				this.loading=false
-				let item = res.body.subjects;
+				let item = res.body.subjects
 				for(let i=0;i<6;i++){
 					let num = 'color' + Math.ceil(Math.random()*12)
 					this.itemClass1.push({'title':item[i].title,'class':num,'stitle':item[i].original_title,'id':item[i].id});
@@ -90,6 +90,10 @@ import spinner from './spinner/spinner'
 		    },
 		    search: function(id) {
 		    	let _url ='/movie/' + id
+		    	this.$router.push({path:_url})
+		    },
+		    toTop250: function(){
+		    	let _url = '/top250'
 		    	this.$router.push({path:_url})
 		    }
 		}
