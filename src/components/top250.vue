@@ -85,7 +85,6 @@ import spinner from './spinner/spinner'
 
 <style scoped>
   .topBody{
-  	background: #f2f2f2;
   	padding-bottom: 20px;
   }
   .header-title {
@@ -130,6 +129,7 @@ import spinner from './spinner/spinner'
   }
   .topCotent ul{
   	margin: 5px 10px;
+  	background: #f2f2f2;
   }
   .topCotent ul li{
   	padding: 5px 10px;
