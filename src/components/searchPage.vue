@@ -49,27 +49,21 @@ import spinner from './spinner/spinner'
 			spinner
 		},
 		mounted: function () {
-			let url = 'https://api.douban.com/v2/movie/top250'
-			this.$http.jsonp(url)
-			.then(function(res){
-				this.loading=false
-				let item = res.body.subjects
-				for(let i=0;i<6;i++){
-					let num = 'color' + Math.ceil(Math.random()*12)
-					this.itemClass1.push({'title':item[i].title,'class':num,'stitle':item[i].original_title,'id':item[i].id});
-				}
-				for(let i=6;i<12;i++){
-					let num = 'color' + Math.ceil(Math.random()*12)
-					this.itemClass2.push({'title':item[i].title,'class':num,'stitle':item[i].original_title,'id':item[i].id});
-				}
-				for(let i=12;i<18;i++){
-					let num = 'color' + Math.ceil(Math.random()*12)
-					this.itemClass3.push({'title':item[i].title,'class':num,'stitle':item[i].original_title,'id':item[i].id});
-				}
-			})
-			.catch(function (res) {
-				console.log(res);
-			})
+			let item = this.$store.getters.getSearchTop250
+			if(item){
+				this.dispatchItem(item)
+			}else{
+				let url = 'https://api.douban.com/v2/movie/top250'
+				this.$http.jsonp(url)
+				.then(function(res){
+					item = res.body.subjects
+					this.$store.dispatch('setSearchTop250',item)
+					this.dispatchItem(item)
+				})
+				.catch(function (res) {
+					console.log(res);
+				})
+			}
 		},
 		methods: {
 			bgmOff : function () {
@@ -95,6 +89,21 @@ import spinner from './spinner/spinner'
 		    toTop250: function(){
 		    	let _url = '/top250'
 		    	this.$router.push({path:_url})
+		    },
+		    dispatchItem: function(item){
+		    	this.loading=false
+				for(let i=0;i<6;i++){
+					let num = 'color' + Math.ceil(Math.random()*12)
+					this.itemClass1.push({'title':item[i].title,'class':num,'stitle':item[i].original_title,'id':item[i].id});
+				}
+				for(let i=6;i<12;i++){
+					let num = 'color' + Math.ceil(Math.random()*12)
+					this.itemClass2.push({'title':item[i].title,'class':num,'stitle':item[i].original_title,'id':item[i].id});
+				}
+				for(let i=12;i<18;i++){
+					let num = 'color' + Math.ceil(Math.random()*12)
+					this.itemClass3.push({'title':item[i].title,'class':num,'stitle':item[i].original_title,'id':item[i].id});
+				}		    	
 		    }
 		}
 	}

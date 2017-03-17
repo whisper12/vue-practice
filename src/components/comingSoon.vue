@@ -34,7 +34,7 @@ export default {
     }
   },
   components: {
-    spinner: spinner,
+    'spinner': spinner,
     'vheader': header
   },
   mounted: function () {
