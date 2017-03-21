@@ -38,16 +38,25 @@ export default {
     'vheader': header
   },
   mounted: function () {
-    this.$http.jsonp('https://api.douban.com/v2/movie/coming_soon')
-        .then(function (response) {
-          this.loading = false
-          this.coming_soon_data = response
-          this.coming_soon_data_body = response.body
-          this.coming_soon_data_body_subjects = response.body.subjects
-        })
-        .catch(function (response) {
-          console.log(response)
-        })
+    let item = this.$store.getters.getComingSoon
+    if(item){
+      this.loading = false
+      this.coming_soon_data = item
+      this.coming_soon_data_body = item.body
+      this.coming_soon_data_body_subjects = item.body.subjects
+    }else{
+      this.$http.jsonp('https://api.douban.com/v2/movie/coming_soon')
+          .then(function (response) {
+            this.loading = false
+            this.coming_soon_data = response
+            this.coming_soon_data_body = response.body
+            this.coming_soon_data_body_subjects = response.body.subjects
+            this.$store.dispatch('setComingSoon',response)
+          })
+          .catch(function (response) {
+            console.log(response)
+          })      
+    }
   },
   methods: {
     showMoreMsg: function (str) {

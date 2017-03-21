@@ -32,7 +32,7 @@ export default {
       loading: true,
       in_theater_date: {},
       in_theater_body: {},
-      in_theater_body_subjects: []
+      in_theaters_data_body_subjects: []
     }
   },
   components: {
@@ -41,16 +41,25 @@ export default {
     'star': star
   },
   mounted: function () {
-    this.$http.jsonp('https://api.douban.com/v2/movie/in_theaters')
-        .then(function (response) {
-          this.loading = false
-          this.in_theaters_data = response
-          this.in_theaters_data_body = response.body
-          this.in_theaters_data_body_subjects = response.body.subjects
-        })
-        .catch(function (response) {
-          console.log(response)
-        })
+    let item = this.$store.getters.getTheaters
+    if(item){
+      this.loading = false
+      this.in_theaters_data = item
+      this.in_theater_body =item.body
+      this.in_theaters_data_body_subjects = item.body.subjects
+    }else{
+      this.$http.jsonp('https://api.douban.com/v2/movie/in_theaters')
+          .then(function (response) {
+            this.loading = false
+            this.in_theaters_data = response
+            this.in_theaters_data_body = response.body
+            this.in_theaters_data_body_subjects = response.body.subjects
+            this.$store.dispatch('setTheaters',response)
+          })
+          .catch(function (response) {
+            console.log(response)
+          })      
+    }
   },
   methods: {
     showMoreMsg: function (str) {

@@ -3,7 +3,7 @@
 		<div class="search-head" flex="cross:center">
 			<div class="close" @click="close">关闭</div>
 			<div class="search-box">
-				<form>
+				<form @submit.prevent="submit">
 					<div>
 						<input v-model="query" @keyup.enter="submit()" type="search" :class="{'bgm-null':bgmNull}" @focus="bgmOff" @blur="bgmOn">
 					</div>
@@ -79,7 +79,7 @@ import spinner from './spinner/spinner'
 				window.history.go(-1)
 			},
 			submit: function () {
-		        this.$router.push({path: '/serchResult', query: { name: this.query }})
+		        this.$router.push({path: '/searchResult', query: { name: this.query }})
 		        this.query = ''
 		    },
 		    search: function(id) {

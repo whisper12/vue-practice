@@ -5,6 +5,7 @@ import comingSoon from '@/components/comingSoon'
 import moviesMsg from '@/components/moviesMsg'
 import searchPage from '@/components/searchPage'
 import top250 from '@/components/top250'
+import searchResult from '@/components/searchResult'
 
 Vue.use(Router)
 
@@ -39,6 +40,10 @@ export default new Router({
       path: '/top250',
       name: 'top250',
       component: top250
+    },{
+      path: '/searchResult',
+      name: 'searchResult',
+      component: searchResult
     }
   ]
 })

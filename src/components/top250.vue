@@ -146,6 +146,7 @@ import spinner from './spinner/spinner'
   	float: left;
     /*margin: 2px 10px 0 0;*/
     width: 20%;
+    text-align: center;
   }
   .movie-img img{
   	width: 1.5rem;

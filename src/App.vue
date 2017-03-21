@@ -17,7 +17,7 @@ export default {
 body{
   margin:0;
 }
-p,ul,li{
+p,ul,li,h1{
   padding: 0;
   margin:0;
 }
