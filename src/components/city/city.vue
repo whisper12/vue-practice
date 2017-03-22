@@ -1,7 +1,7 @@
 <template>
 		<li>
-			<p class="letter" @click="blockChange">{{cityData.letter}}</p>
-			<ul v-if="cityBlockHide" class="cityBlock">
+			<p class="letter" @click="blockChange">{{cityData.letter}} <span :class="{'msg-ellipsis-flag-up':!ellipsisFlag,'msg-ellipsis-flag-down':ellipsisFlag}"></span></p>
+			<ul v-if="!ellipsisFlag" class="cityBlock">
 				<li v-for="item in cityData.data">{{item.name}}</li>
 			</ul>
 		</li>
@@ -16,12 +16,12 @@
 		},
 		data(){
 			return{
-				cityBlockHide:false
+				ellipsisFlag:true
 			}
 		},
 		methods: {
 			blockChange : function(){
-				this.cityBlockHide = !this.cityBlockHide
+				this.ellipsisFlag = !this.ellipsisFlag
 			}
 		}
 	}
@@ -30,7 +30,7 @@
 <style scoped>
 	.letter{
 		font-size: .5rem;
-		padding:5px 10px;
+		padding:10px 10px;
 		border-bottom: 1px #D9D9D9 solid;
 	}
 	.cityBlock{
@@ -47,4 +47,23 @@
 	.cityBlock li:active{
 		background: #ddd;
 	}
+    .letter span{
+      display: inline-block;
+      height: .3rem;
+      width: .3rem;
+      border: 1px solid #d6d3d3;
+      border-width: 0 0 2px 2px;
+      float: right;
+      margin-right: 20px;
+    }
+    .letter .msg-ellipsis-flag-up{
+      -webkit-transform: rotate(-225deg);
+      transform: rotate(-225deg);
+      margin-top: .15rem;
+      border-color: red;
+    }
+    .msg-ellipsis-flag-down{
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
 </style>
