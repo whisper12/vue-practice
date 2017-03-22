@@ -6,6 +6,8 @@ import moviesMsg from '@/components/moviesMsg'
 import searchPage from '@/components/searchPage'
 import top250 from '@/components/top250'
 import searchResult from '@/components/searchResult'
+import cityChange from '@/components/cityChange'
+
 
 Vue.use(Router)
 
@@ -44,6 +46,10 @@ export default new Router({
       path: '/searchResult',
       name: 'searchResult',
       component: searchResult
+    },{
+      path: '/cityChange',
+      name: 'cityChange',
+      component: cityChange
     }
   ]
 })

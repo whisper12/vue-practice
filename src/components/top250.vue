@@ -69,7 +69,7 @@ import spinner from './spinner/spinner'
   		    	this.$router.push({path:_url})
   		    },
   		    handleScroll: function(){
-  		    	if(window.outerHeight + document.body.scrollTop >= document.body.offsetHeight){
+  		    	if(window.innerHeight + document.body.scrollTop >= document.body.offsetHeight){
   		    		this.requestOption.start+=10
 					this.$http.jsonp(this.requestUrl,{params : this.requestOption})
 					.then(function(res){
@@ -179,4 +179,3 @@ import spinner from './spinner/spinner'
   	color: #8e8e8e;
   }
 </style>
-
