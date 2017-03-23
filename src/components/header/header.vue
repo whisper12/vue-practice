@@ -41,6 +41,7 @@
     },
     mounted : function(){
       this.city =this.$store.getters.getCity||window.remote_ip_info['city']
+      this.$store.dispatch('setCity',this.city)
     },
     methods: {
       search: function () {

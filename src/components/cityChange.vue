@@ -1019,7 +1019,10 @@ import city from './city/city'
 			    return res;				
 			},
 			cityAction: function(str){
-				this.$store.dispatch('setCity',str)
+				if(this.$store.getters.getCity != str){
+					this.$store.dispatch('setTheaters','')
+				}
+				this.$store.dispatch('setCity',str)				
 				this.$router.push({path: '/inTheaters'})
 			}			
 		}

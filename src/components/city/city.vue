@@ -24,6 +24,9 @@
 				this.ellipsisFlag = !this.ellipsisFlag
 			},
 			cityAction: function(str){
+				if(this.$store.getters.getCity != str){
+					this.$store.dispatch('setTheaters','')
+				}
 				this.$store.dispatch('setCity',str)
 				this.$router.push({path: '/inTheaters'})
 			}
