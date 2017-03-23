@@ -1,6 +1,8 @@
 <template>
 	<div>
 		<vHeader></vHeader>
+		<div class="cityHeader">您当前所在地区：</div>
+		<div class="cityNow" @click="cityAction(cityNow)">{{cityNow}}</div>
 		<ul>
 			<li v-for="item in cityGroup.segs" :cityData = 'item' :key="item.letter" is="vcity"></li>
 		</ul>
@@ -16,6 +18,7 @@ import city from './city/city'
 		data() {
 			return {
 				loading:true,
+				cityNow:'',
 				cityData:[    
 					{"label":"北京Beijing010","name":"北京","pinyin":"Beijing","zip":"010"},    
 					{"label":"重庆Chongqing023","name":"重庆","pinyin":"Chongqing","zip":"023"},    
@@ -975,6 +978,7 @@ import city from './city/city'
 			}
 		},
 		mounted : function(){
+			this.cityNow = window.remote_ip_info['city']
 			this.cityGroup = this.pySegSort(this.cityData)
 			this.loading = false
 		},
@@ -1013,11 +1017,28 @@ import city from './city/city'
 			    res["segs"] = segs;
 			    res["py"] = py;
 			    return res;				
-			}
+			},
+			cityAction: function(str){
+				this.$store.dispatch('setCity',str)
+				this.$router.push({path: '/inTheaters'})
+			}			
 		}
 	}
 </script>
 
 <style scoped>
-	
+	.cityHeader{
+		font-size: .5rem;
+		padding:10px 10px;
+		border-bottom: 1px #D9D9D9 solid;
+	}
+	.cityNow{
+		border-bottom: 1px #D9D9D9 solid;
+		padding: 15px 10px;
+		font-size: .4rem;
+	}
+	.cityNow:active{
+		background: #ddd;
+	}
+
 </style>

@@ -2,7 +2,7 @@
 		<li>
 			<p class="letter" @click="blockChange">{{cityData.letter}} <span :class="{'msg-ellipsis-flag-up':!ellipsisFlag,'msg-ellipsis-flag-down':ellipsisFlag}"></span></p>
 			<ul v-if="!ellipsisFlag" class="cityBlock">
-				<li v-for="item in cityData.data">{{item.name}}</li>
+				<li v-for="item in cityData.data" @click="cityAction(item.name)">{{item.name}}</li>
 			</ul>
 		</li>
 </template>
@@ -22,6 +22,10 @@
 		methods: {
 			blockChange : function(){
 				this.ellipsisFlag = !this.ellipsisFlag
+			},
+			cityAction: function(str){
+				this.$store.dispatch('setCity',str)
+				this.$router.push({path: '/inTheaters'})
 			}
 		}
 	}
@@ -52,7 +56,7 @@
       height: .3rem;
       width: .3rem;
       border: 1px solid #d6d3d3;
-      border-width: 0 0 2px 2px;
+      border-width: 0 0 3px 3px;
       float: right;
       margin-right: 20px;
     }

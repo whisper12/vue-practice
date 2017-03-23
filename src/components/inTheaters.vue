@@ -11,7 +11,7 @@
               <star :score="item.rating.average"></star>
               <p>{{ item.rating.average }}分</p>
               <p>导演:{{ item.directors[0].name}}</p>
-              <p>主演:{{ item.casts[0].name}}, {{ item.casts[1].name}}</p>
+              <p class="casts">主演:<span v-for="item in item.casts">{{item.name}} </span></p>
             </div>
           </div>
         </div>
@@ -98,6 +98,8 @@ export default {
     align-items: flex-end;
     padding-bottom: 5px;
     border-bottom: 1px solid #d6d6d6;
+    width: 100%;
+    overflow: hidden;
   }
   .in-movies-show p {
     font-size: 14px;
@@ -105,12 +107,21 @@ export default {
   }
   .movieMsg {
     flex: 1;
-    padding-left: 20px;
+    margin-left: 20px;
     vertical-align: top;
+    box-sizing: border-box;
+    width: 100%;
   }
   .movieMsg h2 {
     font-size: 20px;
     font-weight: 500;
     margin-bottom: 5px;
+  }
+  .casts{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+    width: 90%;
   }
 </style>

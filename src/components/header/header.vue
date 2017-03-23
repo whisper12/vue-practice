@@ -3,7 +3,7 @@
     <div class="v-header" flex="main:center">
       <div class="v-header-logo" flex="main:center cross:center">
         <div>
-          <img src="../../assets/logo.png">
+          <img src="../../assets/logo.png" @click="goHome">
         </div>
 <!--         <div class="v-load-title">
           <div>豆瓣</div>
@@ -24,6 +24,7 @@
       <router-link to="/inTheaters" class="v-nav">正在热映</router-link>
       <router-link to="/comingSoon" class="v-nav">即将上映</router-link>
     </div>
+    <div class="city" flex="cross:center main:center" @click="cityChange">{{city}} <span class="triangle-down"></span></div>
     <div>
       
     </div>
@@ -34,12 +35,22 @@
   export default {
     data () {
       return {
-        query: ''
+        query: '',
+        city: ''
       }
+    },
+    mounted : function(){
+      this.city =this.$store.getters.getCity||window.remote_ip_info['city']
     },
     methods: {
       search: function () {
         this.$router.push({path: '/searchPage'})
+      },
+      goHome: function(){
+        this.$router.push({path: '/inTheaters'})
+      },
+      cityChange: function(){
+        this.$router.push({path: '/cityChange'})
       }
     }
   }
@@ -125,5 +136,18 @@
   }
   .v-header-input ul li:nth-child(4){
     color: rgb(42, 184, 204)
+  }
+  .city{
+    font-size: .6rem;
+    background: #ddd;
+    padding:5px 0;
+  }
+  .triangle-down {
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 10px solid #42bd56;
+      margin-left: 10px;
   }
 </style>

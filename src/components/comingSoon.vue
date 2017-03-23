@@ -9,7 +9,7 @@
             <div class="co-movieMsg">
               <h2>{{ item.title }}</h2>
               <p>导演: {{ item.directors[0].name}}</p>
-              <p>主演: {{ item.casts[0].name}}, {{ item.casts[1].name}}</p>
+              <p class="casts">主演: <span v-for="item in item.casts">{{item.name}} </span></p>
               <p>类型: {{item.genres.join(', ')}}</p>
             </div>
           </div>
@@ -105,5 +105,12 @@ export default {
   .co-movies-show p {
     font-size: 14px;
     color: #666;
+  }
+  .casts{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+    width: 85%;
   }
 </style>
