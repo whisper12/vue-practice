@@ -69,14 +69,23 @@ import spinner from './spinner/spinner'
   		    	this.$router.push({path:_url})
   		    },
   		    handleScroll: function(){
+            let _time=1
+            let _this=this
   		    	if(window.innerHeight + document.body.scrollTop >= document.body.offsetHeight){
-  		    		this.requestOption.start+=10
-					this.$http.jsonp(this.requestUrl,{params : this.requestOption})
-					.then(function(res){
-						for(let i =0,k=res.body.subjects.length;i<k;i++){
-							this.itemClass.push(res.body.subjects[i])
-						}
-					})	
+              clearInterval(_this.timeRun)
+              _this.timeRun = setInterval(function(){
+                _time--
+                if(_time==0){
+                  clearInterval(_this.timeRun)
+                  _this.requestOption.start+=10
+                  _this.$http.jsonp(_this.requestUrl,{params : _this.requestOption})
+                  .then(function(res){
+                    for(let i =0,k=res.body.subjects.length;i<k;i++){
+                      _this.itemClass.push(res.body.subjects[i])
+                    }
+                  })                 
+                }
+              },1000)	
   		    	}
   		    }
 		}
