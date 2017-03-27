@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import inTheaters from '@/components/inTheaters'
-import comingSoon from '@/components/comingSoon'
-import moviesMsg from '@/components/moviesMsg'
-import searchPage from '@/components/searchPage'
-import top250 from '@/components/top250'
-import searchResult from '@/components/searchResult'
-import cityChange from '@/components/cityChange'
+import inTheaters from '@/components/movie/inTheaters'
+import comingSoon from '@/components/movie/comingSoon'
+import moviesMsg from '@/components/movie/moviesMsg'
+import searchPage from '@/components/movie/searchPage'
+import top250 from '@/components/movie/top250'
+import searchResult from '@/components/movie/searchResult'
+import cityChange from '@/components/movie/cityChange'
 
-
+import book from '@/components/book/book'
 Vue.use(Router)
 
 export default new Router({
@@ -50,6 +50,10 @@ export default new Router({
       path: '/cityChange',
       name: 'cityChange',
       component: cityChange
+    },{
+      path: '/book',
+      name: 'book',
+      component: book
     }
   ]
 })

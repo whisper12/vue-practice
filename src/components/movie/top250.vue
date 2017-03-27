@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import spinner from './spinner/spinner'
+import spinner from '../spinner/spinner'
 	export default{
 		data () {
 			return {

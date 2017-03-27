@@ -22,9 +22,9 @@
 </template>
 
 <script>
-import spinner from './spinner/spinner'
-import vHeader from './header/header'
-import star from './star/star'
+import spinner from '../spinner/spinner'
+import vHeader from '../header/header'
+import star from '../star/star'
   export default {
     name: 'searchResult',
     data () {

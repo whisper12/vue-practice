@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import spinner from './spinner/spinner'
-import header from './header/header'
+import spinner from '../spinner/spinner'
+import header from '../header/header'
 export default {
   name: 'coming_soon',
   data () {

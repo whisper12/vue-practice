@@ -79,8 +79,8 @@
 </template>
 
 <script>
-import spinner from './spinner/spinner'
-import star from './star/star'
+import spinner from '../spinner/spinner'
+import star from '../star/star'
   export default {
     data () {
       return {

@@ -33,7 +33,7 @@
 	</div>
 </template>
 <script>
-import spinner from './spinner/spinner'
+import spinner from '../spinner/spinner'
 	export default{
 		data () {
 			return {
@@ -132,7 +132,7 @@ import spinner from './spinner/spinner'
 		box-sizing: border-box;
 	    -webkit-appearance: none;
 	    border: 0;
-	    background: url(../assets/search-icon.png) no-repeat 50% #f3f3f3;
+	    background: url(../../assets/search-icon.png) no-repeat 50% #f3f3f3;
 	    background-size: 17.33333px;
 	    border-radius: 3px;
 	    width: 100%;

@@ -20,14 +20,6 @@
         <span @click="search"></span>
       </div>
     </div>
-    <div class="v-nav-bar">
-      <router-link to="/inTheaters" class="v-nav">正在热映</router-link>
-      <router-link to="/comingSoon" class="v-nav">即将上映</router-link>
-    </div>
-    <div class="city" flex="cross:center main:center" @click="cityChange">{{city}} <span class="triangle-down"></span></div>
-    <div>
-      
-    </div>
   </div>
 </template>
 
@@ -137,18 +129,5 @@
   }
   .v-header-input ul li:nth-child(4){
     color: rgb(42, 184, 204)
-  }
-  .city{
-    font-size: .6rem;
-    background: #ddd;
-    padding:5px 0;
-  }
-  .triangle-down {
-      width: 0;
-      height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 10px solid #42bd56;
-      margin-left: 10px;
   }
 </style>

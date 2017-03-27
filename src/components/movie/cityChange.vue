@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import header from './header/header'
-import spinner from './spinner/spinner'
-import city from './city/city'
+import header from '../header/header'
+import spinner from '../spinner/spinner'
+import city from '../city/city'
 	export default{
 		data() {
 			return {
