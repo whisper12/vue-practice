@@ -1,7 +1,8 @@
 <template>
   <div class="come-soon">
     <vheader></vheader>
-    <div class="co-theaters-area">
+    <transition name="fade">
+    <div class="co-theaters-area" v-if='!loading'>
       <div class="co-movies-wrap" >
         <div class="co-movies-show" v-for="(item, index) in coming_soon_data_body_subjects" @click="showMoreMsg(item.id)">
           <div class="co-movies-show-child">
@@ -16,6 +17,7 @@
         </div>
       </div>
     </div>
+    </transition>
     <spinner v-if='loading'></spinner>
   </div>
 </template>
@@ -112,5 +114,13 @@ export default {
     text-overflow: ellipsis;
     box-sizing: border-box;
     width: 85%;
+  }
+  .fade-enter-active, .fade-leave-active {
+    transition: transform,opacity .5s,.5s ease-in-out,ease-in-out;
+    transform: translateX(0);
+  }
+  .fade-enter, .fade-leave-active {
+    opacity: 0.5;
+    transform: translateX(100%);
   }
 </style>

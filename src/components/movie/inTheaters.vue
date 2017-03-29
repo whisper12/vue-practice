@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
   <vheader></vheader>
+  <transition name="fade">
     <div v-if='!loading' class="in-theaters-area">
       <div class="in-movies-wrap" >
         <div class="in-movies-show" v-for="(item, index) in in_theaters_data_body_subjects" @click="showMoreMsg(item.id)">
@@ -17,6 +18,7 @@
         </div>
       </div>      
     </div>
+    </transition>
     <spinner v-if ='loading'></spinner>
   </div>
 </template>
@@ -123,5 +125,13 @@ export default {
     text-overflow: ellipsis;
     box-sizing: border-box;
     width: 90%;
+  }
+  .fade-enter-active{
+    transition: transform,opacity .5s,.5s ease-in-out,ease-in-out;
+    transform: translateX(0);
+  }
+  .fade-enter{
+    opacity: 0.5;
+    transform: translateX(-100%);
   }
 </style>
