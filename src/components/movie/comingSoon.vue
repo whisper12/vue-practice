@@ -116,7 +116,7 @@ export default {
     width: 85%;
   }
   .fade-enter-active, .fade-leave-active {
-    transition: transform,opacity .5s,.5s ease-in-out,ease-in-out;
+    transition: transform,opacity .5s,.5s ease,ease;
     transform: translateX(0);
   }
   .fade-enter, .fade-leave-active {
