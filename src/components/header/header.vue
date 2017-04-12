@@ -51,7 +51,7 @@
         this.$router.push({path: '/inTheaters'})
       },
       cityChange: function(){
-        if (this.$router.history.current.name!='cityChange') {
+        if (this.$route.name!='cityChange') {
           this.$router.push({path: '/cityChange'})
         }else{
           this.$router.push({path: '/inTheaters'})
