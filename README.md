@@ -1,6 +1,5 @@
-# fitstvue
+# 豆瓣
 
-> A Vue.js project
 
 ## Build Setup
 
@@ -13,18 +12,11 @@ npm run dev
 
 # build for production with minification
 npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+### 技术栈
+```
+基于vue2 + vue-router + vuex + vue-resource重写vue版豆瓣，使用webpack打包
+```
+### [扫一扫二维码查看效果](http://htmlpreview.github.io/?https://github.com/whisper12/one-wap/tree/dist/index.html)
+ [![扫一扫二维码查看效果](http://qr.api.cli.im/qr?data=http%253A%252F%252Fhtmlpreview.github.io%252F%253Fhttps%253A%252F%252Fgithub.com%252Fwhisper12%252Fone-wap%252Ftree%252Fdist%252Findex.html&level=H&transparent=false&bgcolor=%23ffffff&forecolor=%23000000&blockpixel=12&marginblock=1&logourl=&size=280&kid=cliim&key=db9d3c17f74f233a9edbd3fec971b5ff)](http://htmlpreview.github.io/?https://github.com/whisper12/one-wap/tree/dist/index.html)
