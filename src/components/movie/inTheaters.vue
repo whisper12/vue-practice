@@ -6,7 +6,7 @@
       <div class="in-movies-wrap" >
         <div class="in-movies-show" v-for="(item, index) in in_theaters_data_body_subjects" @click="showMoreMsg(item.id)">
           <div class="in-movies-show-child">
-            <div class="posters"><img :src="item.images.small" :alt="item.alt"></div>
+            <div class="posters"><img :src="item.images.small" :alt="item.alt" style="width:80px;"></div>
             <div class="movieMsg">
               <h2>{{ item.title }}</h2>
               <star :score="item.rating.average"></star>

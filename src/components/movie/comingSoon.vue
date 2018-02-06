@@ -6,7 +6,7 @@
       <div class="co-movies-wrap" >
         <div class="co-movies-show" v-for="(item, index) in coming_soon_data_body_subjects" @click="showMoreMsg(item.id)">
           <div class="co-movies-show-child">
-            <div class="co-posters"><img :src="item.images.small" :alt="item.alt"></div>
+            <div class="co-posters"><img :src="item.images.small" :alt="item.alt" style="width:80px;"></div>
             <div class="co-movieMsg">
               <h2>{{ item.title }}</h2>
               <p>导演: {{ item.directors[0].name}}</p>

@@ -71,7 +71,7 @@ import spinner from '../spinner/spinner'
   		    handleScroll: function(){
             let _time=1
             let _this=this
-  		    	if(window.innerHeight + document.body.scrollTop >= document.body.offsetHeight){
+  		    	if(window.innerHeight + document.documentElement.scrollTop >= document.body.offsetHeight){
               clearInterval(_this.timeRun)
               _this.timeRun = setInterval(function(){
                 _time--
