@@ -50,7 +50,7 @@ export default {
       this.in_theater_body =item.body
       this.in_theaters_data_body_subjects = item.body.subjects
     }else{
-      this.$http.get('/v2/movie/in_theaters',{params:{'city':this.$store.getters.getCity,'count':28}})
+      this.$http.jsonp('https://api.douban.com/v2/movie/in_theaters',{params:{'city':this.$store.getters.getCity,'count':28}})
           .then(function (response) {
             this.loading = false
             this.in_theaters_data = response
